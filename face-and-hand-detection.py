@@ -52,20 +52,20 @@ while True:
     # Belirlediğimiz noktaların bağlantılarını çizdiriyoruz
     if results.multi_hand_landmarks:
         for handLms in results.multi_hand_landmarks:
-            # Print Landmark ID for hand tracking data
+            # El izleme verileri için Landmark ID'yi yazdırın
             for id, lm in enumerate(handLms.landmark):
                 #print(id,lm)
-                # Mathematically Determine LandMark Center
+                # LandMark Merkezini Matematiksel Olarak Belirleyin
                 h,w,c = img.shape
                 cx, cy = int(lm.x*w), int(lm.y*h)
                 # print(id, cx,cy)
-                # Determine if first landmark (palm) is being displayed, then differentiate it
+                # İlk dönüm noktasının (avuç içi) görüntülenip görüntülenmediğini belirleyin, ardından ayırt edin
                 if id == 0:
                     cv2.circle(img, (cx,cy), 20, (255,0,255), cv2.FILLED)
-                # Detemine if thumb (id=4) is being displayed
+                # Başparmağın (id=4) görüntülenip görüntülenmediğini belirleyin
                 if id == 4 :
                     cv2.circle(img, (cx, cy), 10, (255, 127, 0), cv2.FILLED)
-                # Detemine if fingertips are being displayed
+                # Parmak uçlarının görüntülenip görüntülenmediğini belirleyin
                 if id == 8 or id == 12 or id == 16 or id == 20 :
                     cv2.circle(img, (cx, cy), 7, (0, 255, 0), cv2.FILLED)
 
